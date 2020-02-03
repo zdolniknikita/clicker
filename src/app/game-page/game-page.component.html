@@ -1,0 +1,32 @@
+<div>
+
+    <div>
+        <h3 class="center-align">Добро пожаловать, {{ userName }} !</h3>
+      </div>
+    <div *ngIf='!start'>
+        <div>
+            <h5 class="left-align">Задайте время игры!</h5>
+            <h5 class="left-align">Вам дано {{ time }} секунд </h5>
+            <form action="#">
+                <p class="range-field">
+                  <input type="range" id="test5" [min]="minRange" [max]="maxRange" [(ngModel)]="time" [ngModelOptions]="{standalone: true}"/>
+                </p>
+              </form>
+            <!-- <input type="range" [min]="minRange" [max]="maxRange" step="1" [(ngModel)]="time" > -->
+          </div>
+        <div>
+
+
+        </div>
+        <start-button title='Нажмите для старта!' color='#c62828 red darken-3' pulse='true' (onStart)='onStart()'></start-button>
+    </div>
+    <div *ngIf='start'>
+        <h5 class="left-align">Осталось {{ time }} секунд</h5>
+        <div class="progress">
+            <div class="determinate" [ngStyle]="{'width.%': time*100/timeCount}"></div>
+        </div>
+        <h5 class="center-align">Вы набрали {{ count }} кликов</h5>
+        <start-button title='Жми меня...' (onStart)='clicker()' color='#2962ff blue accent-4'></start-button>
+
+    </div>
+</div>

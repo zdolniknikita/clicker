@@ -1,0 +1,18 @@
+
+    <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <input 
+                type="text" 
+                id="autocomplete-input" 
+                class="autocomplete"
+                [value]='userName'
+                (input)="onChange($event)"
+                >
+              <label for="autocomplete-input">Введите свое имя</label>
+            </div>
+          </div>
+        </div>
+      </div>

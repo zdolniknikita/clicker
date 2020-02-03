@@ -1,0 +1,11 @@
+<div>
+    <h3 class="center-align">Супер кликер</h3>
+    <form (submit)="onSubmit()">
+        <login-input 
+            [userName]='userName' 
+            (onChangeUserName)='onChangeUserName($event)'
+        >
+        </login-input>
+            <login-button></login-button>
+    </form>
+</div>

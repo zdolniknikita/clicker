@@ -1,0 +1,35 @@
+<div>
+    <!-- <ul> -->
+        <h3 class="center-align"> {{ user.name }}, таблица выших рекордов!</h3>
+        <!-- <li *ngFor='let item of user.records'>
+            <p> time = {{ item.time }}</p>
+            <p> clicks = {{ item.record }}</p>
+        </li> -->
+
+        <table class="highlight">
+            <thead>
+              <tr>
+                  <th>Имя</th>
+                  <th>Время, с</th>
+                  <th>Рекорд</th>
+                  <th>Дата</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr *ngFor='let item of user.records'>
+                <td>{{ user.name }}</td>
+                <td>{{ item.time }}</td>
+                <td>{{ item.record }}</td>
+                <td>{{ item.date }}</td>
+              </tr>
+            </tbody>
+          </table>
+    <!-- </ul> -->
+    <div>
+      <start-button color='#2962ff blue accent-4' title='Давай еще разок' pulse='true' (click)='restart()'></start-button>
+      <start-button color='#455a64 blue-grey darken-2' (click)='exit()' title='Выход' ></start-button>
+    </div>
+    <!-- <button (click)='restart()'>Restart</button>
+    <button (click)='exit()'>Exit</button> -->
+</div>
