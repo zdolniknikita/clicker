@@ -28,10 +28,8 @@ export class GamePageComponent implements OnInit {
     this.time = 10
     this.count = 0
     this.timeCount
-    this.minRange = 0
+    this.minRange = 1
     this.maxRange = 120
-
-  
   }
 
   onStart = () => {

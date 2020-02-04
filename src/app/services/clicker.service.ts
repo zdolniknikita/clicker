@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import IUser from '../interfaces/IUser.interface'
 import { Router } from '@angular/router';
+import { PercentPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,7 @@ export class ClickerService {
         this.currentUser = userName
         let newUser: IUser = {
           name: userName,
+          maxClicksOnSecond: 0,
           records: []
         }
   
@@ -45,11 +47,28 @@ export class ClickerService {
       this.setLocalStorage()
    }
 
-   addRecord = (userName: string, record: object) => {
+   addRecord = (userName: string, record: any) => {
         this.users = this.users.map( item => {
         if (item.name === userName) {
 
           item.records.push(record)
+          console.log(item.records)
+          
+          if (item.records.length > 1) {
+
+            let max: any = item.records.reduce((prev: any, curr: any) => {
+              if( prev.record/prev.time > curr.record/curr.time ) {
+                return prev
+              }
+              return curr
+            })
+
+            item.maxClicksOnSecond = max.record / max.time
+
+          } else {
+            item.maxClicksOnSecond = record.record/record.time
+          }
+
           return item
         }
         return item
@@ -77,6 +96,5 @@ export class ClickerService {
     this.stage = this.stages[stage]
   }
 
-
+   getTopUsers = () => ((this.users.sort((a, b) => b.maxClicksOnSecond - a.maxClicksOnSecond)).slice(0, 10))
 }
-//ff
