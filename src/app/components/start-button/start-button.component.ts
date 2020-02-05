@@ -21,4 +21,8 @@ export class StartButtonComponent implements OnInit {
     this.onStart.emit()
   }
 
+  className() {
+    return `${this.color} ${this.pulse ? "pulse": ''}`
+  }
+
 }
